@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Something Special 💍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>#boyScene{
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+.step1-bg{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:
+  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url("step1-bg.jpg") center/contain no-repeat;
+
+  animation:fadeInBg 2s ease;
+}
+
+#okayBtn{
+  margin-top:20px;
+  padding:14px 35px;
+  font-size:1.1em;
+  border-radius:30px;
+}
+
+@keyframes fadeInBg{
+  from{opacity:0;transform:scale(1.05)}
+  to{opacity:1;transform:scale(1)}
+}
+
+#boy{
+  width: 100%;
+}
+
+#ringBox{
+  position: absolute;
+  width: 50px;
+  top: 58%;   /* 👈 hand ke hisaab se adjust */
+  left: 62%;  /* 👈 hand ke hisaab se adjust */
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.fall{
+  animation: ringFall 2.5s ease-in forwards;
+}
+
+@keyframes ringFall{
+  0%{
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 1;
+  }
+  40%{
+    transform: translate(-50%, 10px) rotate(20deg);
+  }
+  100%{
+    transform: translate(-50%, 220px) rotate(120deg);
+    opacity: 0.9;
+  }
+}
+#specialBlock{
+  margin-top: 20px;
+  animation: fadeIn 2s ease;
+}
+
+#specialImg{
+  width: 180px;        /* 👈 image size */
+  margin-top: 15px;
+  animation: fadeIn 2s ease;
+}
+
+
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:'Poppins',sans-serif;
+  text-align:center;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+h1,h2{
+  font-family:'Great Vibes',cursive;
+  font-size:3em;
+  animation:fadeIn 2s ease;
+}
+
+p{
+  font-size:1.3em;
+  animation:fadeIn 2s ease;
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:8px;
+  background:#ff4081;
+  color:#fff;
+  font-size:1em;
+  cursor:pointer;
+  margin:10px;
+}
+button:hover{background:#e91e63}
+
+.hidden{display:none}
+
+#scene img{
+  width:300px;
+  animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.heart{
+  position:absolute;
+  color:pink;
+  font-size:20px;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  from{bottom:-20px;opacity:1}
+  to{bottom:100vh;opacity:0}
+}
+
+#finalNote{
+  background:#fff;
+  color:#e91e63;
+  padding:30px;
+  border-radius:20px;
+  margin:30px;
+  font-size:1.6em;
+  box-shadow:0 0 20px pink;
+}
+#flower-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+.fadeText {
+  animation: fadeText 2s ease forwards;
+}
+
+@keyframes fadeText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flower {
+  position: absolute;
+  top: -50px;
+  font-size: 24px;
+  animation: fall linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+#happy img{
+  width: 400px;      /* 👈 yahan size control */
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 5%px;
+}
+
+#sadScene{
+  position: relative;
+  width: 300px;
+  margin: auto;
+}
+
+
+/* ring box position – haath ke paas adjust karo */
+#sadRing{
+  position: absolute;
+  width: 29px;
+  top: 40%;     /* 👈 hand ke hisaab se */
+  left: 52%;    /* 👈 hand ke hisaab se */
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+#sadScene{
+  position: relative;
+  width: 360px;     /* 👈 container bada */
+  margin: auto;
+}
+
+#sadBoy{
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+@media (max-width: 600px){
+  #finalNote{
+    padding: 16px;
+    font-size: 1.05em;
+  }
+
+  #finalNote h2{
+    font-size: 2em;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+  <div id="flower-rain"></div>
+
+
+<audio id="music" src="bg.mp3"></audio>
+<audio id="noSound" src="ringboxdroping.mp3"></audio>
+<audio id="heartbeat" src="heartbeat.mp3" loop></audio>
+
+<!-- STEP 1 -->
+<div id="step1" class="step1-bg">
+  <h1>Hey…(Her Name) I have something to tell you 💌</h1>
+  <button id="okayBtn" onclick="startStory()">Okay 💖</button>
+</div>
+
+
+<div id="step2" class="hidden">
+  <p id="line0" class="hidden">
+  Every time I think of you, my heart feels a little fuller.<br>
+  Right now, I just want you to know what you truly mean to me.
+</p>
+
+  <p id="line1" class="hidden">You mean the world to me…</p>
+
+  <div id="specialBlock" class="hidden">
+    <p id="line2">And today I want to ask you something very special 🥺</p>
+    <img id="specialImg" src="nervous.png">
+  </div>
+
+  <button id="continueBtn" class="hidden" onclick="next()">Continue</button>
+</div>
+
+
+
+<!-- STEP 3 Proposal -->
+<div id="step3" class="hidden">
+  <div id="boyScene">
+  <img id="boy" src="proposal.png" alt="Boy Proposing">
+  <img id="ringBox" src="ring.png" alt="Ring Box">
+</div>
+
+  <h2>Will you be my best friend?</h2>
+  <button onclick="answer('yes')">Yes ❤️</button>
+  <button onclick="answer('no'); dropRing()">No 💔</button>
+
+</div>
+
+<!-- STEP 4 Sad -->
+<div id="sad" class="hidden">
+  <div id="sadScene">
+    <img id="sadBoy" src="broken.png">
+    <img id="sadRing" src="ring.png">
+  </div>
+
+  <h2>My heart just broke…</h2>
+  <p>But my love for you will never fade 😔</p>
+</div>
+
+
+<!-- STEP 5 Happy -->
+<div id="happy" class="hidden">
+  <img src="hug.png">
+  <h2>You said YES ❤️</h2>
+  <p>My life just became complete 💕</p>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="hidden">
+  <div id="finalNote">
+    <h2>My bestieee 💖</h2>
+    <p>
+      From this moment till my last breath,  
+      I promise to stand beside you in every happiness and pain.  
+      You are my today, my tomorrow, my forever.
+    </p>
+    <strong>I LOVE YOU ❤️</strong>
+    <p style="font-size:14px;margin-top:20px;color:gray">Designed with ❤ by Karthikeya</p>
+  </div>
+</div>
+
+<script>
+  
+function startStory(){
+  const music = document.getElementById("music");
+  music.volume = 1;
+  music.play();
+
+  // STEP-1 hide
+  document.getElementById("step1").classList.add("hidden");
+
+  // STEP-2 show
+  document.getElementById("step2").classList.remove("hidden");
+
+  const line1 = document.getElementById("line1");
+  const line0 = document.getElementById("line0");
+  const specialBlock = document.getElementById("specialBlock");
+  const btn = document.getElementById("continueBtn");
+
+  // Line 0 show
+setTimeout(() => {
+  line0.classList.remove("hidden");
+  line0.classList.add("fadeText");
+}, 500);
+
+// Line 0 hide
+setTimeout(() => {
+  line0.classList.add("hidden");
+}, 8000);
+
+// Line 1 show
+setTimeout(() => {
+  line1.classList.remove("hidden");
+  line1.classList.add("fadeText");
+}, 8200);
+
+// Line 1 hide
+setTimeout(() => {
+  line1.classList.add("hidden");
+}, 11000);
+
+
+  // ✅ Text + image show together
+  setTimeout(() => {
+    specialBlock.classList.remove("hidden");
+    specialBlock.classList.add("fadeText");
+  }, 11100);
+
+  // Continue button
+  setTimeout(() => {
+    btn.classList.remove("hidden");
+    btn.classList.add("fadeText");
+  }, 11500);
+}
+function freezeFlowers() {
+  stopFlowers(); // naye flowers band
+  document.querySelectorAll(".flower").forEach(flower => {
+    flower.style.animationPlayState = "paused";
+  });
+}
+
+function resumeFlowers() {
+  document.querySelectorAll(".flower").forEach(flower => {
+    flower.style.animationPlayState = "running";
+  });
+  startFlowers(); // naye flowers start
+}
+
+
+function dropRing(){
+  const ring = document.getElementById("ringBox");
+  ring.style.opacity = "1";
+  ring.classList.add("fall");
+}
+function dropSadRing(){
+  const ring = document.getElementById("sadRing");
+  ring.style.opacity = "1";
+  ring.classList.add("fall");
+}
+
+function next(){
+  freezeFlowers(); // 🌸 flower rain freeze
+  document.getElementById("specialBlock").classList.add("hidden");
+  document.getElementById("step2").classList.add("hidden");
+  document.getElementById("step3").classList.remove("hidden");
+
+  const bg = document.getElementById("music");
+  fadeVolume(bg, 0.05);
+
+  document.getElementById("heartbeat").play();
+}
+
+function fadeVolume(audio, targetVolume, duration = 1500) {
+  const step = 0.05;
+  const intervalTime = duration / (Math.abs(audio.volume - targetVolume) / step);
+
+  const fade = setInterval(() => {
+    if (audio.volume < targetVolume) {
+      audio.volume = Math.min(audio.volume + step, targetVolume);
+    } else {
+      audio.volume = Math.max(audio.volume - step, targetVolume);
+    }
+
+    if (audio.volume === targetVolume) {
+      clearInterval(fade);
+    }
+  }, intervalTime);
+}
+
+function answer(choice){
+  const bg = document.getElementById("music");
+fadeVolume(bg, 1); // 🔊 full volume back
+
+  document.getElementById("step3").classList.add("hidden");
+
+  // ❤️ dhak dhak band
+  const hb = document.getElementById("heartbeat");
+  hb.pause();
+  hb.currentTime = 0;
+
+  if(choice === "no"){
+
+  // 💔 no sound play
+  const noSound = document.getElementById("noSound");
+  noSound.currentTime = 0;
+  noSound.play();
+
+  // 🎵 bg music stop
+  const bg = document.getElementById("music");
+  bg.pause();
+  bg.currentTime = 0;
+
+
+  stopFlowers();
+  removeAllFlowers();
+
+  document.getElementById("sad").classList.remove("hidden");
+
+  // 💍 ring drop after small delay
+  setTimeout(()=>{
+    dropSadRing();
+  },800);
+}
+ else {
+    // ✅ flower rain wapas start
+    resumeFlowers(); // 🌸 flower rain wapas continue
+
+    document.getElementById("happy").classList.remove("hidden");
+    hearts();
+
+    setTimeout(()=>{
+      document.getElementById("happy").classList.add("hidden");
+      document.getElementById("final").classList.remove("hidden");
+      document.body.style.background="#fff";
+    },6000);
+  }
+}
+
+
+function hearts(){
+  for(let i=0;i<30;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDelay=Math.random()*4+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  }
+}
+
+</script><script>
+const flowers = ["🌸", "🌹", "💐", "🌺", "🌷"];
+
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("flower");
+  flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+
+  flower.style.left = Math.random() * 100 + "vw";
+  flower.style.animationDuration = 3 + Math.random() * 5 + "s";
+  flower.style.fontSize = 20 + Math.random() * 20 + "px";
+
+  document.getElementById("flower-rain").appendChild(flower);
+
+  setTimeout(() => {
+    flower.remove();
+  }, 8000);
+}
+
+let flowerInterval = setInterval(createFlower, 300);
+
+function stopFlowers(){
+  clearInterval(flowerInterval);
+}
+
+function startFlowers(){
+  flowerInterval = setInterval(createFlower, 300);
+}
+
+function removeAllFlowers(){
+  document.getElementById("flower-rain").innerHTML = "";
+}
+
+</script>
+
+
+</body>
+</html>
