@@ -7,11 +7,13 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-<style>#boyScene{
+<style>
+#boyScene{
   position: relative;
   width: 300px;
   margin: auto;
 }
+
 .step1-bg{
   height:100vh;
   display:flex;
@@ -21,7 +23,6 @@
   background:
   linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
   url("step1-bg.jpg") center/contain no-repeat;
-
   animation:fadeInBg 2s ease;
 }
 
@@ -44,8 +45,8 @@
 #ringBox{
   position: absolute;
   width: 50px;
-  top: 58%;   /* 👈 hand ke hisaab se adjust */
-  left: 62%;  /* 👈 hand ke hisaab se adjust */
+  top: 58%;
+  left: 62%;
   transform: translate(-50%, -50%);
   opacity: 0;
 }
@@ -67,17 +68,17 @@
     opacity: 0.9;
   }
 }
+
 #specialBlock{
   margin-top: 20px;
   animation: fadeIn 2s ease;
 }
 
 #specialImg{
-  width: 180px;        /* 👈 image size */
+  width: 180px;
   margin-top: 15px;
   animation: fadeIn 2s ease;
 }
-
 
 body{
   margin:0;
@@ -110,6 +111,7 @@ button{
   cursor:pointer;
   margin:10px;
 }
+
 button:hover{background:#e91e63}
 
 .hidden{display:none}
@@ -130,6 +132,7 @@ button:hover{background:#e91e63}
   font-size:20px;
   animation:float 6s linear infinite;
 }
+
 @keyframes float{
   from{bottom:-20px;opacity:1}
   to{bottom:100vh;opacity:0}
@@ -144,6 +147,7 @@ button:hover{background:#e91e63}
   font-size:1.6em;
   box-shadow:0 0 20px pink;
 }
+
 #flower-rain {
   position: fixed;
   top: 0;
@@ -154,6 +158,7 @@ button:hover{background:#e91e63}
   overflow: hidden;
   z-index: 9999;
 }
+
 .fadeText {
   animation: fadeText 2s ease forwards;
 }
@@ -187,32 +192,17 @@ button:hover{background:#e91e63}
     opacity: 0;
   }
 }
+
 #happy img{
-  width: 400px;      /* 👈 yahan size control */
+  width: 400px;
   max-width: 80%;
   height: auto;
-  margin-bottom: 5%px;
+  margin-bottom: 5px;
 }
 
 #sadScene{
   position: relative;
-  width: 300px;
-  margin: auto;
-}
-
-
-/* ring box position – haath ke paas adjust karo */
-#sadRing{
-  position: absolute;
-  width: 29px;
-  top: 40%;     /* 👈 hand ke hisaab se */
-  left: 52%;    /* 👈 hand ke hisaab se */
-  transform: translate(-50%, -50%);
-  opacity: 0;
-}
-#sadScene{
-  position: relative;
-  width: 360px;     /* 👈 container bada */
+  width: 360px;
   margin: auto;
 }
 
@@ -221,6 +211,16 @@ button:hover{background:#e91e63}
   height: auto;
   margin-top: 20px;
 }
+
+#sadRing{
+  position: absolute;
+  width: 29px;
+  top: 40%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
 @media (max-width: 600px){
   #finalNote{
     padding: 16px;
@@ -231,295 +231,291 @@ button:hover{background:#e91e63}
     font-size: 2em;
   }
 }
-
-
 </style>
 </head>
 
 <body>
   <div id="flower-rain"></div>
 
+  <!-- ✅ FIXED: Added preload attribute -->
+  <audio id="music" src="bg.mp3" preload="auto"></audio>
+  <audio id="noSound" src="ringboxdroping.mp3" preload="auto"></audio>
+  <audio id="heartbeat" src="heartbeat.mp3" loop preload="auto"></audio>
 
-<audio id="music" src="bg.mp3"></audio>
-<audio id="noSound" src="ringboxdroping.mp3"></audio>
-<audio id="heartbeat" src="heartbeat.mp3" loop></audio>
-
-<!-- STEP 1 -->
-<div id="step1" class="step1-bg">
-  <h1>Hey…(Her Name) I have something to tell you 💌</h1>
-  <button id="okayBtn" onclick="startStory()">Okay 💖</button>
-</div>
-
-
-<div id="step2" class="hidden">
-  <p id="line0" class="hidden">
-  Every time I think of you, my heart feels a little fuller.<br>
-  Right now, I just want you to know what you truly mean to me.
-</p>
-
-  <p id="line1" class="hidden">You mean the world to me…</p>
-
-  <div id="specialBlock" class="hidden">
-    <p id="line2">And today I want to ask you something very special 🥺</p>
-    <img id="specialImg" src="nervous.png">
+  <!-- STEP 1 -->
+  <div id="step1" class="step1-bg">
+    <h1>Hey…(Her Name) I have something to tell you 💌</h1>
+    <button id="okayBtn" onclick="startStory()">Okay 💖</button>
   </div>
 
-  <button id="continueBtn" class="hidden" onclick="next()">Continue</button>
-</div>
-
-
-
-<!-- STEP 3 Proposal -->
-<div id="step3" class="hidden">
-  <div id="boyScene">
-  <img id="boy" src="proposal.png" alt="Boy Proposing">
-  <img id="ringBox" src="ring.png" alt="Ring Box">
-</div>
-
-  <h2>Will you be my best friend?</h2>
-  <button onclick="answer('yes')">Yes ❤️</button>
-  <button onclick="answer('no'); dropRing()">No 💔</button>
-
-</div>
-
-<!-- STEP 4 Sad -->
-<div id="sad" class="hidden">
-  <div id="sadScene">
-    <img id="sadBoy" src="broken.png">
-    <img id="sadRing" src="ring.png">
-  </div>
-
-  <h2>My heart just broke…</h2>
-  <p>But my love for you will never fade 😔</p>
-</div>
-
-
-<!-- STEP 5 Happy -->
-<div id="happy" class="hidden">
-  <img src="hug.png">
-  <h2>You said YES ❤️</h2>
-  <p>My life just became complete 💕</p>
-</div>
-
-<!-- FINAL -->
-<div id="final" class="hidden">
-  <div id="finalNote">
-    <h2>My bestieee 💖</h2>
-    <p>
-      From this moment till my last breath,  
-      I promise to stand beside you in every happiness and pain.  
-      You are my today, my tomorrow, my forever.
+  <!-- STEP 2 -->
+  <div id="step2" class="hidden">
+    <p id="line0" class="hidden">
+      Every time I think of you, my heart feels a little fuller.<br>
+      Right now, I just want you to know what you truly mean to me.
     </p>
-    <strong>I LOVE YOU ❤️</strong>
-    <p style="font-size:14px;margin-top:20px;color:gray">Designed with ❤ by Karthikeya</p>
+
+    <p id="line1" class="hidden">You mean the world to me…</p>
+
+    <div id="specialBlock" class="hidden">
+      <p id="line2">And today I want to ask you something very special 🥺</p>
+      <img id="specialImg" src="nervous.png">
+    </div>
+
+    <button id="continueBtn" class="hidden" onclick="next()">Continue</button>
   </div>
-</div>
 
-<script>
-  
-function startStory(){
-  const music = document.getElementById("music");
-  music.volume = 1;
-  music.play();
+  <!-- STEP 3 Proposal -->
+  <div id="step3" class="hidden">
+    <div id="boyScene">
+      <img id="boy" src="proposal.png" alt="Boy Proposing">
+      <img id="ringBox" src="ring.png" alt="Ring Box">
+    </div>
 
-  // STEP-1 hide
-  document.getElementById("step1").classList.add("hidden");
+    <h2>Will you be my best friend?</h2>
+    <button onclick="answer('yes')">Yes ❤️</button>
+    <button onclick="answer('no'); dropRing()">No 💔</button>
+  </div>
 
-  // STEP-2 show
-  document.getElementById("step2").classList.remove("hidden");
+  <!-- STEP 4 Sad -->
+  <div id="sad" class="hidden">
+    <div id="sadScene">
+      <img id="sadBoy" src="broken.png">
+      <img id="sadRing" src="ring.png">
+    </div>
 
-  const line1 = document.getElementById("line1");
-  const line0 = document.getElementById("line0");
-  const specialBlock = document.getElementById("specialBlock");
-  const btn = document.getElementById("continueBtn");
+    <h2>My heart just broke…</h2>
+    <p>But my love for you will never fade 😔</p>
+  </div>
 
-  // Line 0 show
-setTimeout(() => {
-  line0.classList.remove("hidden");
-  line0.classList.add("fadeText");
-}, 500);
+  <!-- STEP 5 Happy -->
+  <div id="happy" class="hidden">
+    <img src="hug.png">
+    <h2>You said YES ❤️</h2>
+    <p>My life just became complete 💕</p>
+  </div>
 
-// Line 0 hide
-setTimeout(() => {
-  line0.classList.add("hidden");
-}, 8000);
+  <!-- FINAL -->
+  <div id="final" class="hidden">
+    <div id="finalNote">
+      <h2>My bestieee 💖</h2>
+      <p>
+        From this moment till my last breath,  
+        I promise to stand beside you in every happiness and pain.  
+        You are my today, my tomorrow, my forever.
+      </p>
+      <strong>I LOVE YOU ❤️</strong>
+      <p style="font-size:14px;margin-top:20px;color:gray">Designed with ❤ by Karthikeya</p>
+    </div>
+  </div>
 
-// Line 1 show
-setTimeout(() => {
-  line1.classList.remove("hidden");
-  line1.classList.add("fadeText");
-}, 8200);
+  <script>
+  // ✅ FIXED: Better audio handling
+  function startStory(){
+    const music = document.getElementById("music");
+    music.volume = 1;
+    
+    // ✅ Handle autoplay blocking
+    const playPromise = music.play();
+    
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.log("Audio autoplay blocked. User interaction required.");
+        // Try playing again after a short delay
+        setTimeout(() => music.play(), 100);
+      });
+    }
 
-// Line 1 hide
-setTimeout(() => {
-  line1.classList.add("hidden");
-}, 11000);
+    // STEP-1 hide
+    document.getElementById("step1").classList.add("hidden");
 
+    // STEP-2 show
+    document.getElementById("step2").classList.remove("hidden");
 
-  // ✅ Text + image show together
-  setTimeout(() => {
-    specialBlock.classList.remove("hidden");
-    specialBlock.classList.add("fadeText");
-  }, 11100);
+    const line1 = document.getElementById("line1");
+    const line0 = document.getElementById("line0");
+    const specialBlock = document.getElementById("specialBlock");
+    const btn = document.getElementById("continueBtn");
 
-  // Continue button
-  setTimeout(() => {
-    btn.classList.remove("hidden");
-    btn.classList.add("fadeText");
-  }, 11500);
-}
-function freezeFlowers() {
-  stopFlowers(); // naye flowers band
-  document.querySelectorAll(".flower").forEach(flower => {
-    flower.style.animationPlayState = "paused";
-  });
-}
+    // Line 0 show
+    setTimeout(() => {
+      line0.classList.remove("hidden");
+      line0.classList.add("fadeText");
+    }, 500);
 
-function resumeFlowers() {
-  document.querySelectorAll(".flower").forEach(flower => {
-    flower.style.animationPlayState = "running";
-  });
-  startFlowers(); // naye flowers start
-}
+    // Line 0 hide
+    setTimeout(() => {
+      line0.classList.add("hidden");
+    }, 8000);
 
+    // Line 1 show
+    setTimeout(() => {
+      line1.classList.remove("hidden");
+      line1.classList.add("fadeText");
+    }, 8200);
 
-function dropRing(){
-  const ring = document.getElementById("ringBox");
-  ring.style.opacity = "1";
-  ring.classList.add("fall");
-}
-function dropSadRing(){
-  const ring = document.getElementById("sadRing");
-  ring.style.opacity = "1";
-  ring.classList.add("fall");
-}
+    // Line 1 hide
+    setTimeout(() => {
+      line1.classList.add("hidden");
+    }, 11000);
 
-function next(){
-  freezeFlowers(); // 🌸 flower rain freeze
-  document.getElementById("specialBlock").classList.add("hidden");
-  document.getElementById("step2").classList.add("hidden");
-  document.getElementById("step3").classList.remove("hidden");
+    // Text + image show together
+    setTimeout(() => {
+      specialBlock.classList.remove("hidden");
+      specialBlock.classList.add("fadeText");
+    }, 11100);
 
-  const bg = document.getElementById("music");
-  fadeVolume(bg, 0.05);
+    // Continue button
+    setTimeout(() => {
+      btn.classList.remove("hidden");
+      btn.classList.add("fadeText");
+    }, 11500);
+  }
 
-  document.getElementById("heartbeat").play();
-}
+  function freezeFlowers() {
+    stopFlowers();
+    document.querySelectorAll(".flower").forEach(flower => {
+      flower.style.animationPlayState = "paused";
+    });
+  }
 
-function fadeVolume(audio, targetVolume, duration = 1500) {
-  const step = 0.05;
-  const intervalTime = duration / (Math.abs(audio.volume - targetVolume) / step);
+  function resumeFlowers() {
+    document.querySelectorAll(".flower").forEach(flower => {
+      flower.style.animationPlayState = "running";
+    });
+    startFlowers();
+  }
 
-  const fade = setInterval(() => {
-    if (audio.volume < targetVolume) {
-      audio.volume = Math.min(audio.volume + step, targetVolume);
+  function dropRing(){
+    const ring = document.getElementById("ringBox");
+    ring.style.opacity = "1";
+    ring.classList.add("fall");
+  }
+
+  function dropSadRing(){
+    const ring = document.getElementById("sadRing");
+    ring.style.opacity = "1";
+    ring.classList.add("fall");
+  }
+
+  function next(){
+    freezeFlowers();
+    document.getElementById("specialBlock").classList.add("hidden");
+    document.getElementById("step2").classList.add("hidden");
+    document.getElementById("step3").classList.remove("hidden");
+
+    const bg = document.getElementById("music");
+    fadeVolume(bg, 0.05);
+
+    document.getElementById("heartbeat").play().catch(e => console.log("Heartbeat blocked:", e));
+  }
+
+  function fadeVolume(audio, targetVolume, duration = 1500) {
+    const step = 0.05;
+    const intervalTime = duration / (Math.abs(audio.volume - targetVolume) / step);
+
+    const fade = setInterval(() => {
+      if (audio.volume < targetVolume) {
+        audio.volume = Math.min(audio.volume + step, targetVolume);
+      } else {
+        audio.volume = Math.max(audio.volume - step, targetVolume);
+      }
+
+      if (audio.volume === targetVolume) {
+        clearInterval(fade);
+      }
+    }, intervalTime);
+  }
+
+  function answer(choice){
+    const bg = document.getElementById("music");
+    fadeVolume(bg, 1);
+
+    document.getElementById("step3").classList.add("hidden");
+
+    const hb = document.getElementById("heartbeat");
+    hb.pause();
+    hb.currentTime = 0;
+
+    if(choice === "no"){
+      // No sound play
+      const noSound = document.getElementById("noSound");
+      noSound.currentTime = 0;
+      noSound.play().catch(e => console.log("No sound blocked:", e));
+
+      // bg music stop
+      const bg = document.getElementById("music");
+      bg.pause();
+      bg.currentTime = 0;
+
+      stopFlowers();
+      removeAllFlowers();
+
+      document.getElementById("sad").classList.remove("hidden");
+
+      // Ring drop after small delay
+      setTimeout(()=>{
+        dropSadRing();
+      }, 800);
     } else {
-      audio.volume = Math.max(audio.volume - step, targetVolume);
+      resumeFlowers();
+
+      document.getElementById("happy").classList.remove("hidden");
+      hearts();
+
+      setTimeout(()=>{
+        document.getElementById("happy").classList.add("hidden");
+        document.getElementById("final").classList.remove("hidden");
+        document.body.style.background="#fff";
+      }, 6000);
     }
+  }
 
-    if (audio.volume === targetVolume) {
-      clearInterval(fade);
+  function hearts(){
+    for(let i=0; i<30; i++){
+      let h = document.createElement("div");
+      h.className = "heart";
+      h.innerHTML = "❤";
+      h.style.left = Math.random()*100 + "vw";
+      h.style.animationDelay = Math.random()*4 + "s";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 6000);
     }
-  }, intervalTime);
-}
-
-function answer(choice){
-  const bg = document.getElementById("music");
-fadeVolume(bg, 1); // 🔊 full volume back
-
-  document.getElementById("step3").classList.add("hidden");
-
-  // ❤️ dhak dhak band
-  const hb = document.getElementById("heartbeat");
-  hb.pause();
-  hb.currentTime = 0;
-
-  if(choice === "no"){
-
-  // 💔 no sound play
-  const noSound = document.getElementById("noSound");
-  noSound.currentTime = 0;
-  noSound.play();
-
-  // 🎵 bg music stop
-  const bg = document.getElementById("music");
-  bg.pause();
-  bg.currentTime = 0;
-
-
-  stopFlowers();
-  removeAllFlowers();
-
-  document.getElementById("sad").classList.remove("hidden");
-
-  // 💍 ring drop after small delay
-  setTimeout(()=>{
-    dropSadRing();
-  },800);
-}
- else {
-    // ✅ flower rain wapas start
-    resumeFlowers(); // 🌸 flower rain wapas continue
-
-    document.getElementById("happy").classList.remove("hidden");
-    hearts();
-
-    setTimeout(()=>{
-      document.getElementById("happy").classList.add("hidden");
-      document.getElementById("final").classList.remove("hidden");
-      document.body.style.background="#fff";
-    },6000);
   }
-}
 
+  // Flower rain script
+  const flowers = ["🌸", "🌹", "💐", "🌺", "🌷"];
 
-function hearts(){
-  for(let i=0;i<30;i++){
-    let h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="❤";
-    h.style.left=Math.random()*100+"vw";
-    h.style.animationDelay=Math.random()*4+"s";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),6000);
+  function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = 3 + Math.random() * 5 + "s";
+    flower.style.fontSize = 20 + Math.random() * 20 + "px";
+
+    document.getElementById("flower-rain").appendChild(flower);
+
+    setTimeout(() => {
+      flower.remove();
+    }, 8000);
   }
-}
 
-</script><script>
-const flowers = ["🌸", "🌹", "💐", "🌺", "🌷"];
+  let flowerInterval = setInterval(createFlower, 300);
 
-function createFlower() {
-  const flower = document.createElement("div");
-  flower.classList.add("flower");
-  flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+  function stopFlowers(){
+    clearInterval(flowerInterval);
+  }
 
-  flower.style.left = Math.random() * 100 + "vw";
-  flower.style.animationDuration = 3 + Math.random() * 5 + "s";
-  flower.style.fontSize = 20 + Math.random() * 20 + "px";
+  function startFlowers(){
+    flowerInterval = setInterval(createFlower, 300);
+  }
 
-  document.getElementById("flower-rain").appendChild(flower);
-
-  setTimeout(() => {
-    flower.remove();
-  }, 8000);
-}
-
-let flowerInterval = setInterval(createFlower, 300);
-
-function stopFlowers(){
-  clearInterval(flowerInterval);
-}
-
-function startFlowers(){
-  flowerInterval = setInterval(createFlower, 300);
-}
-
-function removeAllFlowers(){
-  document.getElementById("flower-rain").innerHTML = "";
-}
-
-</script>
-
+  function removeAllFlowers(){
+    document.getElementById("flower-rain").innerHTML = "";
+  }
+  </script>
 
 </body>
 </html>
